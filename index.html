@@ -25,7 +25,7 @@
 </style>
 </head>
 <body>
-    <div id="presentation">
+    <div id="presentation" style="display: none">
         <div class="slide" data-duration="100">
             Sample for<br/><br/>
             <tt>$(...).slidecast()</tt>
@@ -52,7 +52,7 @@
     <script src="slidecast.js"></script>
     <script>
         jQuery(function ($) {
-            $('#presentation').slidecast();
+            $('#presentation').show().slidecast();
         });
     </script>
 </body>
