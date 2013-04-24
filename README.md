@@ -1,3 +1,5 @@
+[Demo](http://ngn.github.io/html5-slidecast/)
+
 The bloody thing is in an early stage of development.  I may abandon it anytime
 or completely change the API, but here's how I envision its usage:
 
