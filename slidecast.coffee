@@ -26,7 +26,4 @@ do ($ = jQuery) ->
 
       update()
 
-      $('audio', @)
-        .on('playing', update)
-        .on('pause',   update)
-        .on('seeked',  update)
+      $('audio', @).on 'playing pause seeked', update

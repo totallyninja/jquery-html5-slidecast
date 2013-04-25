@@ -36,7 +36,7 @@
           }
         };
         update();
-        return $('audio', this).on('playing', update).on('pause', update).on('seeked', update);
+        return $('audio', this).on('playing pause seeked', update);
       });
     };
   })(jQuery);
