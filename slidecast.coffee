@@ -1,22 +1,27 @@
 do ($ = jQuery) ->
-  $.fn.slidecast = ->
+  $.fn.slidecast = (opts = {}) ->
+    opts.slideSelector ?= '.slide'
+    opts.audioSelector ?= 'audio'
+
     @each ->
 
+      $slides = $ opts.slideSelector, @
       slides = []
       offset = 0
-      $('.slide', @).hide().each ->
+      $slides.hide().each ->
         slides.push time: offset, element: @
         duration = parseInt $(@).data 'duration'
         offset += duration
 
-      audioElement = $(@).find('audio').get 0
+      $audio = $ opts.audioSelector, @
+      audioElement = $audio.get 0
       tid = null # timeout id
 
       update = ->
         t = Math.floor 1000 * audioElement.currentTime
         i = slides.length - 1
         while t < slides[i].time then i--
-        $('#presentation .slide').hide()
+        $slides.hide()
         $(slides[i].element).show()
         clearTimeout tid
         tid = null
@@ -26,4 +31,4 @@ do ($ = jQuery) ->
 
       update()
 
-      $('audio', @).on 'playing pause seeked', update
+      $audio.on 'playing pause seeked', update
